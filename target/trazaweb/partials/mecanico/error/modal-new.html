@@ -1,0 +1,53 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title">{{title}}</h4>
+  </div>
+  <div class="modal-body">
+    <div class="alert alert-success ng-hide" ng-show="successSaveError != null">
+	  <a class="close" data-dismiss="alert">×</a>
+	  <strong class="ng-binding">{{successSaveError}}</strong>
+	</div>
+	<div class="alert alert-danger ng-hide" ng-show="errorSaveError != null">
+	  <a class="close" data-dismiss="alert">×</a>
+	  <strong class="ng-binding">{{errorSaveError}}</strong>
+	</div>
+  	<div class="control-group">
+      <div class="row">
+        <div class="col-xs-11">
+          <label class="control-label">Error: </label>
+       	  <angucomplete-alt id="errores"
+              placeholder="Buscar errores"
+              pause="400"
+              selected-object="errorResult.data"
+              remote-url="{{rootPath}}/rest/mecanico/findError/"
+              title-field="descripcion",
+              minlength="3",
+              text-searching="Buscando errores...",
+              text-no-results="Sin resultados.",
+              input-class="form-control form-control-small",
+              disable-input="errorResult.data != null"/> 
+	    </div>
+	    <div class="col-xs-1">
+	      <label class="control-label">&nbsp;</label>
+	      <a ng-click="cleanErrorResult()" class="btn btn-small btn-danger"><i class="fa fa-times"></i></a>
+	    </div>
+      </div>
+      <br>
+      <div class="row" ng-show="newErrorForm == true">
+        <div class="col-xs-11">
+          <textarea class="form-control" name="inputError" ng-model="errorNew.descripcion" ng-disabled="newErrorForm == false"/>
+          <button type="button" ng-click="saveErrorNew();" class="btn btn-small btn-success" ng-disabled="errorNew.descripcion == null || errorNew.descripcion == ''"><i class="fa fa-check-circle-o"></i></button>
+          <a ng-click="cancelErrorNew();" class="btn btn-small btn-danger"><i class="fa fa-times"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" ng-click="addNewError()" ng-show="newErrorForm == false"><i class="fa fa-plus-square-o"></i> Nuevo Error</a>
+    <button type="button" class="btn btn-success" ng-click="ok_confirm();cancel();" ng-disabled="errorResult.data == null"><i class="fa fa-floppy-o"></i> Aceptar</button>
+    <button type="button" class="btn btn-default" ng-click="cancel()">Cancelar</button>
+  </div>
+</div><!-- /.modal-content -->
+
+

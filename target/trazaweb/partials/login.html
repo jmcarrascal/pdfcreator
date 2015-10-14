@@ -1,0 +1,14 @@
+<br>
+<alert-error></alert-error>
+ <form class="form-signin" ng-show="!name()">
+	<h2 class="form-signin-heading">Ingresar</h2>
+			<input id="username" ng-model="username" type="text" class="input-block-level" placeholder="Usuario" />
+			<input id="password" ng-model="password" type="password" class="input-block-level" placeholder="Password"/>
+			<label class="checkbox">
+		          <input type="checkbox" value="remember-me"> Recordar
+	        </label>
+
+	<div class="form-actions">
+		<input type="submit" value="Ingresar" class="btn btn-large btn-primary" ng-click="login()" ng-disabled="username == null || password == null"/>
+	</div>
+</form> 

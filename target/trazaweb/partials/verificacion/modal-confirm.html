@@ -1,0 +1,33 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title">{{title?title:'Confirmación'}}</h4>
+  </div>
+  <div class="modal-body">
+    <div class="alert alert-danger ng-hide" ng-show="errorCheckInfoMotor != null">
+	  <a class="close" data-dismiss="alert">×</a>
+	  <strong class="ng-binding">{{errorCheckInfoMotor}}</strong>
+	</div>
+	<div class="alert alert-danger ng-hide" ng-show="errorCheckInfoLlave != null">
+	  <a class="close" data-dismiss="alert">×</a>
+	  <strong class="ng-binding">{{errorCheckInfoLlave}}</strong>
+	</div>
+	{{msg_confirm}}
+	<div class="control-group" ng-show="puesto.checkInfo == true">
+  	   <label class="control-label" for="inputNroMotor">Número de Motor:</label>
+       <div class="controls">
+       	 <input class="form-control" type="text" name="inputNroMotor" ng-required="true" ng-model="rodado.nroMotor" ng-disabled="puesto.checkInfo == false"/> 
+       </div>
+       <label class="control-label" for="inputNroLLave">Número de LLave:</label>
+       <div class="controls">
+       	 <input class="form-control" type="text" name="inputNroLLave" ng-required="true" ng-model="rodado.nroLlave" ng-disabled="puesto.checkInfo == false"/>
+       </div>
+     </div>     
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" ng-show="puesto.checkInfo == false" ng-click="ok_confirm();cancel();"><i class="fa class="fa fa-floppy-o"></i> Aceptar</button>
+    <button type="button" class="btn btn-success" ng-show="puesto.checkInfo == true" ng-disabled="rodado.nroMotor == null || rodado.nroLlave == null || validateInfoMotor == null || validateInfoLLave == null" ng-click="ok_confirm();cancel();"><i class="fa class="fa fa-floppy-o"></i> Aceptar</button>
+    <button type="button" class="btn btn-default" ng-click="cancel()">Cancelar</button>
+  </div>
+</div><!-- /.modal-content -->
+

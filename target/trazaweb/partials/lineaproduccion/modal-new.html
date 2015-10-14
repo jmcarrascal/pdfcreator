@@ -1,0 +1,25 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title">{{title}}</h4>
+  </div>
+  <div class="modal-body">
+  	<div class="control-group">
+  	   <label class="control-label" for="inputNombre">Nombre:</label>
+       <div class="controls">
+       	 <input class="form-control" type="text" name="inputNombre" ng-required="true" ng-model="lineaProduccion.nombre" ng-disabled="read == true"/> 
+       </div>
+       <label class="control-label" for="inputDescripcion">Descripción:</label>
+       <div class="controls">
+       	 <textarea class="form-control" name="inputDescripcion" ng-model="lineaProduccion.descripcion" ng-disabled="read == true"/> 
+       </div>
+     </div> 
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" ng-click="ok_confirm();cancel();" ng-disabled="lineaProduccion.nombre == null" ng-show="read == false"><i class="fa fa-floppy-o"></i> Aceptar</button>
+    <button type="button" class="btn btn-default" ng-click="cancel()" ng-show="read == false">Cancelar</button>
+    <button type="button" class="btn btn-default" ng-click="cancel()" ng-show="read == true">Volver</button>
+  </div>
+</div><!-- /.modal-content -->
+
+

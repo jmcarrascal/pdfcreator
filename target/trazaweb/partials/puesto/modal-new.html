@@ -1,0 +1,39 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title">{{title}}</h4>
+  </div>
+  <div class="modal-body">
+  	<div class="control-group">
+      <div class="row">
+        <div class="col-xs-3">
+          <label class="control-label" for="inputOrden">Orden:</label>
+       	  <input class="form-control" type="number" name="inputOrden" ng-required="true" ng-model="puesto.orden" ng-disabled="read == true"/> 
+	    </div>
+	    <div class="col-xs-9">
+	      <label class="control-label" for="inputNombre">Nombre:</label>
+          <input class="form-control" type="text" name="inputNombre" ng-required="true" ng-model="puesto.nombre" ng-disabled="read == true"/>
+        </div>
+	  </div>
+	  <div class="row">
+        <div class="col-xs-12">
+          <label class="control-label" for="inputDescripcion">Descripción:</label>
+          <textarea class="form-control" name="inputDescripcion" ng-model="puesto.descripcion" ng-disabled="read == true"/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+		  <label class="control-label" for="inputCheckInfo">Asignación Motor y Llave: </label>
+		  <input type="checkbox" name="inputCheckInfo" ng-model="puesto.checkInfo" ng-disabled="read == true">
+		</div>
+	  </div>
+    </div> 
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" ng-click="ok_confirm();cancel();" ng-disabled="puesto.orden == null || puesto.nombre == null" ng-show="read == false"><i class="fa fa-floppy-o"></i> Aceptar</button>
+    <button type="button" class="btn btn-default" ng-click="cancel()" ng-show="read == false">Cancelar</button>
+    <button type="button" class="btn btn-default" ng-click="cancel()" ng-show="read == true">Volver</button>
+  </div>
+</div><!-- /.modal-content -->
+
+

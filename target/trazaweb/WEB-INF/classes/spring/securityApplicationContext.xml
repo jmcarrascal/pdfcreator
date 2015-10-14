@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/security
+                           http://www.springframework.org/schema/security/spring-security.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd">
+                           
+	<context:component-scan base-package="ar.com.trazaweb" />
+ 
+ 	<security:http pattern="/css/**" security="none"/>
+	<security:http pattern="/img/**" security="none"/>
+	<security:http pattern="/js/**" security="none"/>
+	<security:http pattern="/commons/**" security="none"/>
+	<!-- create-session="stateless" -->
+	<security:http
+			realm="Protected API"
+			use-expressions="true"
+			auto-config="true"
+			entry-point-ref="unauthorizedEntryPoint"
+			authentication-manager-ref="authenticationManager" >
+
+		 <security:logout logout-url="/j_spring_security_logout"  invalidate-session="true" delete-cookies="true"  />
+		 <security:csrf />  
+		
+ 		<security:headers>
+	      <security:cache-control />
+	      <security:content-type-options />
+	      <security:frame-options policy="SAMEORIGIN" />
+	      <security:hsts />
+	      <security:xss-protection />
+
+    	</security:headers>
+
+
+ 		<!-- <security:custom-filter ref="authenticationTokenProcessingFilter" position="BASIC_AUTH_FILTER" /> -->   
+		<!-- <security:intercept-url pattern="/rest/user" access="permitAll" /> -->
+		<security:intercept-url pattern="/access/**" access="permitAll" />
+		<security:intercept-url pattern="/login" access="permitAll" />
+		<security:intercept-url pattern="/logout" access="permitAll" />
+		<!-- <security:intercept-url pattern="/#/access-denied" access="permitAll" /> -->
+		<security:intercept-url pattern="/rest/user/authenticate/**" access="permitAll" />
+		
+		<security:intercept-url pattern="/partials/lineaproduccion/**" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/partials/puesto/**" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/partials/checklist/**" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/partials/metodoverif/**" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/partials/usuario/**" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/partials/codigo/**" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/partials/verificacion/**" access="hasRole('ROLE_OPER')" />
+		<security:intercept-url pattern="/partials/supervisacion/**" access="hasRole('ROLE_SUPER')" />
+		<security:intercept-url pattern="/partials/mecanico/**" access="hasRole('ROLE_MECA')" />
+		<security:intercept-url pattern="/partials/auditor/**" access="hasRole('ROLE_AUDIT')" />
+		 
+		 <security:intercept-url pattern="/rest/lineaProduccion/**" access="hasRole('ROLE_ADMIN')" />
+		 <security:intercept-url pattern="/rest/puesto/**" access="hasRole('ROLE_ADMIN')" />
+		 <security:intercept-url pattern="/rest/checklist/**" access="hasRole('ROLE_ADMIN')" />
+		 <security:intercept-url pattern="/rest/metodoVerificacion/**" access="hasRole('ROLE_ADMIN')" />
+		 <security:intercept-url pattern="/rest/operadorPuesto/**" access="hasRole('ROLE_ADMIN')" />
+		 <security:intercept-url pattern="/rest/usuario/**" access="hasRole('ROLE_ADMIN')" />
+		 <security:intercept-url pattern="/rest/rol/**" access="hasRole('ROLE_ADMIN')" />
+		 <security:intercept-url pattern="/rest/codigo/**" access="hasRole('ROLE_ADMIN')" />
+		 <security:intercept-url pattern="/rest/verificacion/**" access="hasRole('ROLE_OPER')" />
+		 <security:intercept-url pattern="/rest/supervisacion/**" access="hasRole('ROLE_SUPER')" />
+		 <security:intercept-url pattern="/rest/mecanico/**" access="hasRole('ROLE_MECA')" />
+		 <security:intercept-url pattern="/rest/reportManager/**" access="hasRole('ROLE_AUDIT')" />
+		 <security:intercept-url pattern="/rest/auditor/**" access="hasRole('ROLE_AUDIT')" />
+		 <security:intercept-url pattern="/rest/bloqueos/**" access="hasRole('ROLE_AUDIT')" />
+		 <security:intercept-url pattern="/rest/masterSamplePart/**" access="hasRole('ROLE_AUDIT')" />
+		
+		<!-- <security:access-denied-handler error-page="/#/access-denied" />  -->
+		<!-- <security:form-login authentication-success-handler-ref="mySuccessHandler" /> -->
+		
+		<!-- <security:http-basic /> -->
+		
+		
+		<security:custom-filter ref="logoutGuard" before="LOGOUT_FILTER"/>
+	</security:http>
+	
+	<bean id="unauthorizedEntryPoint" class="ar.com.trazaweb.authentication.UnauthorizedEntryPoint" />
+	
+<!-- 	<security:authentication-manager id="authenticationManager"> -->
+<!-- 	    <security:authentication-provider ref="customAuthenticationProvider" /> -->
+<!-- 	</security:authentication-manager> -->
+	
+<!-- 	<bean id="customAuthenticationProvider" class="ar.com.trazaweb.authentication.CustomAuthenticationProviderImpl"/>	 -->
+
+</beans> 

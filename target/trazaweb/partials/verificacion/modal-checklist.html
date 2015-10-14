@@ -1,0 +1,30 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title">{{title}}</h4>
+  </div>
+  <div class="modal-body">
+  	<div class="control-group">
+      <div class="row">
+        <div class="col-xs-12">
+	      <label class="control-label" for="inputParametro">Parámetro:</label>
+          <input class="form-control" type="text" name="inputParametro" value="{{checklistAct.parametro}}" ng-disabled="true"/>
+        </div>
+        <div class="col-xs-12">
+	      <label class="control-label" for="inputEspecificaciones">Especificaciones:</label>
+          <input class="form-control" type="text" name="inputEspecificaciones" value="{{checklistAct.especificaciones}}" ng-disabled="true"/>
+        </div>
+        <div class="col-xs-12">
+	      <label class="control-label" for="inputCriterioAceptacion">Criterio de aceptación:</label>
+          <input class="form-control" type="text" name="inputCriterioAceptacion" value="{{checklistAct.criterioAceptacion}}" ng-disabled="true"/>
+        </div>
+      </div>
+    </div> 
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" ng-click="btnCheck(true);cancel()" ng-disabled="puesto.id == null"><i class="fa fa-check-circle"></i> </button>
+    <button type="button" class="btn btn-danger" ng-click="btnCheck(false);cancel()"><i class="fa fa-times-circle "></i> </button>
+  </div>
+</div><!-- /.modal-content -->
+
+

@@ -1,0 +1,56 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title">{{title}}</h4>
+  </div>
+  <div class="modal-body">
+  	<div class="control-group">
+      <div class="row">
+        <div class="col-xs-6">
+          <label class="control-label" for="inputNombre">Nombre:</label>
+       	  <input class="form-control" type="text" name="inputNombre" ng-required="true" ng-model="usuario.nombre" ng-disabled="action == 'SHOW'"/> 
+	    </div>
+	    <div class="col-xs-6">
+	      <label class="control-label" for="inputApellido">Apellido:</label>
+          <input class="form-control" type="text" name="inputApellido" ng-required="true" ng-model="usuario.apellido" ng-disabled="action == 'SHOW'"/>
+        </div>
+	  </div>
+      <div class="row">
+        <div class="col-xs-6">
+          <label class="control-label" for="inputUsername">Username:</label>
+       	  <input class="form-control" type="text" name="inputUsername" ng-required="true" ng-model="usuario.username" ng-disabled="action == 'SHOW'"/> 
+	    </div>
+	    <div class="col-xs-6">
+	      <label class="control-label" for="inputPassword">Password:</label>
+          <input class="form-control" type="password" name="inputPassword" ng-required="true" ng-model="usuario.password" ng-disabled="action == 'SHOW' || action == 'EDIT'"/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          <label class="control-label" for="inputRol">Rol:</label>
+          <select class="form-control" ng-model="usuario.rol.id" name="inputRol" ng-required="true" ng-disabled="action == 'SHOW'">
+		    <option ng-repeat="r in roles" value="{{r.id}}" ng-selected="r.id == usuario.rol.id">{{r.nombre}}</option>
+		  </select>
+		</div>
+		<div class="col-xs-6" ng-show="read == true">
+		  <label class="control-label" for="inputLastLogin">Último Acceso:</label>
+       	  <input class="form-control" type="date" name="inputLastLogin" ng-required="true" value="{{usuario.lastLogin | date: 'dd-MM-yyyy'}}" ng-disabled="action == 'SHOW'"/>
+		</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3">
+		  <label class="control-label" for="inputLocked">Bloqueado: </label>
+		  <input type="checkbox" name="inputLocked" ng-model="usuario.locked" ng-disabled="action == 'SHOW'">
+		</div>
+	  </div>
+    </div> 
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" ng-click="ok_confirm();cancel();" ng-show="action == 'NEW'" ng-disabled="usuario.nombre == null || usuario.apellido == null || usuario.username == null || usuario.password == null || usuario.rol.id == null"><i class="fa fa-floppy-o"></i> Aceptar</button>
+    <button type="button" class="btn btn-success" ng-click="ok_confirm();cancel();" ng-show="action == 'EDIT'" ng-disabled="usuario.nombre == null || usuario.apellido == null || usuario.username == null || usuario.rol.id == null"><i class="fa fa-floppy-o"></i> Aceptar</button>
+    <button type="button" class="btn btn-default" ng-click="cancel()" ng-show="action == 'NEW' || action == 'EDIT'">Cancelar</button>
+    <button type="button" class="btn btn-default" ng-click="cancel()" ng-show="action == 'SHOW'">Volver</button>
+  </div>
+</div><!-- /.modal-content -->
+
+

@@ -1,0 +1,87 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title">{{title}}</h4>
+  </div>
+  <div class="modal-body">
+  	<div class="control-group">
+      <div class="row">
+      	<div class="col-xs-4">
+          <label class="control-label" for="inputNroChasis">Número de Chasis:</label>
+       	  <input class="form-control" type="text" name="inputNroChasis" value="{{item.rodado.nroChasis}}" ng-disabled="true"/> 
+	    </div>
+        <div class="col-xs-4">
+          <label class="control-label" for="inputNroMotor">Número de Motor:</label>
+       	  <input class="form-control" type="text" name="inputNroMotor" value="{{item.rodado.nroMotor}}" ng-disabled="true"/> 
+	    </div>
+	    <div class="col-xs-4">
+          <label class="control-label" for="inputNroLlave">Número de Llave:</label>
+       	  <input class="form-control" type="text" name="inputNroLlave" value="{{item.rodado.nroLlave}}" ng-disabled="true"/> 
+	    </div>
+	  </div>
+      <div class="row" ng-show="item.checklist != null">
+        <div class="col-xs-6">
+          <label class="control-label" for="inputLineaProduccion">Línea de Producción:</label>
+       	  <input class="form-control" type="text" name="inputLineaProduccion" value="{{item.checklist.puesto.lineaProduccion.nombre}}" ng-disabled="true"/> 
+	    </div>
+	    <div class="col-xs-6">
+          <label class="control-label" for="inputPuesto">Puesto:</label>
+       	  <input class="form-control" type="text" name="inputPuesto" value="{{item.checklist.puesto.orden}}-{{item.checklist.puesto.nombre}}" ng-disabled="true"/> 
+	    </div>
+	  </div>
+	  <div class="row" ng-show="item.checklist != null">
+	    <div class="col-xs-2">
+	      <label class="control-label" for="inputEtapa">Etapa:</label>
+          <input class="form-control" type="text" name="inputEtapa" value="{{item.checklist.etapa}}" ng-disabled="true"/>
+        </div>
+        <div class="col-xs-10">
+	      <label class="control-label" for="inputParametro">Parámetro:</label>
+          <input class="form-control" type="text" name="inputParametro" value="{{item.checklist.parametro}}" ng-disabled="true"/>
+        </div>
+	  </div>
+      <div class="row" ng-show="item.checklist != null">
+        <div class="col-xs-12">
+          <label class="control-label" for="inputEspecificaciones">Especificaciones:</label>
+          <input class="form-control" type="text" name="inputEspecificaciones" value="{{item.checklist.especificaciones}}" ng-disabled="true"/>
+        </div>
+      </div>
+      <div class="row" ng-show="item.checklist != null">
+        <div class="col-xs-12">
+          <label class="control-label" for="inputCriterioAceptacion">Criterio de aceptación:</label>
+          <input class="form-control" type="text" name="inputCriterioAceptacion" value="{{item.checklist.criterioAceptacion}}" ng-disabled="true"/>
+        </div>
+      </div>
+      <div class="row" ng-show="item.checklist != null">
+        <div class="col-xs-9">
+          <label class="control-label" for="inputMetodoVerificacion">Método Verificación:</label>
+          <input class="form-control" type="text" name="inputMetodoVerificacion" value="{{item.checklist.metodoVerificacion.nombre}}" ng-disabled="true"/>
+		</div>
+		<div class="col-xs-3">
+          <label class="control-label" for="inputFrecuencia">Frecuencia:</label>
+       	  <input class="form-control" type="text" name="inputFrecuencia" value="{{item.checklist.frecuencia}}" ng-disabled="true"/> 
+	    </div>
+      </div>
+      <div class="row" ng-show="item.error != null">
+        <div class="col-xs-12">
+          <label class="control-label" for="inputError">Error:</label>
+          <textarea class="form-control" name="inputError" ng-disabled="true">{{item.error.descripcion}}</textarea>
+		</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          <label class="control-label" for="inputOperador">Operador:</label>
+          <input class="form-control" type="text" name="inputOperador" value="{{item.usuario.apellido}}, {{item.usuario.nombre}}" ng-disabled="true"/>
+		</div>
+		<div class="col-xs-6">
+          <label class="control-label" for="inputFechaOperador">Fecha:</label>
+       	  <input class="form-control" type="text" name="inputFechaOperador" value="{{item.fecha | date:'dd/MM/yyyy h:mma'}}" ng-disabled="true"/> 
+	    </div>
+	  </div>
+    </div> 
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="cancel()">Volver</button>
+  </div>
+</div><!-- /.modal-content -->
+
+

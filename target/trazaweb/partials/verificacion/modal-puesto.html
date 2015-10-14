@@ -1,0 +1,38 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title">{{title}}</h4>
+  </div>
+  <div class="modal-body">
+  	<div class="control-group">
+      <div class="row">
+        <div class="col-xs-12">
+       	  <select class="form-control" ng-model="puestoSelected.id" name="inputPuesto" ng-change="getCodigosLineaProduccion()">
+		    <option ng-repeat="p in puestos" value="{{p.id}}" name="inputPuesto" ng-selected="p.id == puestoSelected.id">{{p.lineaProduccion.nombre}} - {{p.orden}} - {{p.nombre}}</option>
+		  </select>
+	    </div>
+      </div> 
+      <div class="row" ng-show="rodado.codigo == null">
+        <div class="col-xs-12">
+          <label class="control-label" for="inputCodigo">Código:</label>
+          <select class="form-control" ng-required="true" ng-model="codigoSelected.id" name="inputCodigo" ng-change="setCodigoSelected()">
+		    <option ng-repeat="lpc in lineaProduccionCodigos" value="{{lpc.codigo.id}}" name="inputCodigo">{{lpc.codigo.codigo}} - {{lpc.codigo.descripcion}}</option>
+		  </select>
+		</div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="row">
+        <div class="pull-right">
+          <button type="button" class="btn btn-default" ng-click="cancel()">Cancelar</button>
+        </div>
+        <div class="pull-right">&nbsp;</div>
+        <div class="pull-right">
+          <button type="button" class="btn btn-success" ng-click="ok_confirm();cancel();" ng-disabled="puestoSelected.id == null || (rodado.codigo == null && codigoSelected.id == null)"><i class="fa fa-floppy-o"></i> Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /.modal-content -->
+
+

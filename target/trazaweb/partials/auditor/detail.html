@@ -1,0 +1,41 @@
+<div class="form-base1">
+  <div class="row-fluid">
+    <h4>Auditar</h4>
+    <alert-message></alert-message>
+	<alert-error></alert-error>
+  </div>
+  <div class="form-base">
+    <div class="row-fluid">
+      <div class="row">
+      	<div class="col-xs-4">
+          <label class="control-label" for="inputNroChasis">Número de Chasis:</label>
+	      <input type="text" name="inputNroChasis" class="form-control" ng-value="rodado.nroChasis" ng-disabled="true">
+	    </div>
+	    <div class="col-xs-4">
+          <label class="control-label" for="inputNroMotor">Número de Motor:</label>
+	      <input type="text" name="inputNroMotor" class="form-control" ng-value="rodado.nroMotor" ng-disabled="true">
+	    </div>
+	    <div class="col-xs-4">
+          <label class="control-label" for="inputNroLlave">Número de Llave:</label>
+	      <input type="text" name="inputNroLlave" class="form-control" ng-value="rodado.nroLlave" ng-disabled="true">
+	    </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <label class="control-label">OK:</label>
+          <button type="button" class="btn btn-success" ng-click="filterCheck(true);"><i class="fa fa-check-circle"></i> </button>
+          <button type="button" class="btn btn-danger" ng-click="filterCheck(false);"><i class="fa fa-times-circle"></i> </button>
+          <button type="button" class="btn btn-default" ng-click="clearfilterCheck();"><i class="fa fa-refresh"></i> Limpiar</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="gridStyle" ng-grid="verifErrorGrid.gridOptions"></div>
+        </div>
+      </div>
+      <a ng-click="addError()" class="btn btn-small btn-primary"><i class="fa fa-plus-square-o"></i> Nuevo Error</a>
+      <a ng-click="exportPdf()" class="btn btn-small btn-success"><i class="fa fa-print"></i> Imprimir</a>
+      <a ng-click="back()" class="btn btn-small btn-default"><i class="fa fa-reply"></i> Volver</a>
+	</div>
+  </div>
+</div>

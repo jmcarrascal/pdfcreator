@@ -1,0 +1,32 @@
+<div class="form-base1">
+  <div class="row-fluid">
+    <h4>Puesto</h4>
+    <alert-message></alert-message>
+	<alert-error></alert-error>
+  </div>
+  <div class="form-base">
+    <div class="row-fluid">
+      <div class="row">
+      	<div class="col-xs-5">
+          <label class="control-label" for="inputLineaProduccionNombre">Línea Producción:</label>
+	      <input type="text" name="inputLineaProduccionNombre" class="form-control" ng-value="puesto.lineaProduccion.nombre" ng-disabled="true">
+	    </div>
+	    <div class="col-xs-6">
+          <label class="control-label" for="inputPuestoNombre">Puesto:</label>
+	      <input type="text" name="inputPuestoNombre" class="form-control" ng-value="puesto.nombre" ng-disabled="true">
+	    </div>
+	    <div class="col-xs-1">
+          <label class="control-label" for="inputPuestoOrden">Orden:</label>
+	      <input type="text" name="inputPuestoOrden" class="form-control" ng-value="puesto.orden" ng-disabled="true">
+	    </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="gridStyle" ng-grid="checklistGrid.gridOptions"></div>
+        </div>
+      </div>
+      <a ng-click="create()" class="btn btn-small btn-primary"><i class="fa fa-plus-square-o"></i> Nuevo Checklist</a>
+      <a ng-click="back()" class="btn btn-small btn-default"><i class="fa fa-reply"></i> Volver</a>
+	</div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="form-base1">
+  <div class="row-fluid">
+    <h4>Buscar Transacciones pendientes por remito</h4>
+    <alert-message></alert-message>
+	<alert-error></alert-error>
+  </div>
+  <div class="form-base">
+    <div class="row-fluid">
+      <div class="row">
+        <div class="col-xs-12">
+          <form ng-submit="submit()">
+            <label class="control-label" for="nroRemito">Numero de remito:</label>
+       	    <input class="form-control" type="text" id="nroRemito" name="nroRemito" ng-model="nroRemito" value="R020000000730"/>
+       	    <br>
+       	    <input type="submit" name="inputSubmit" class="btn btn-small btn-primary" id="submit" value="Buscar" ng-disabled="nroRemito == null || nroRemito == ''" />
+       	  </form>
+        </div>
+      </div>
+	</div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="modal-content modal-lg">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title">Agregar Artículos al Bloqueo</h4>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-xs-4">
+        <label class="control-label" for="iSearchLineaProduccion">Línea de Producción:</label>
+        <select class="form-control"
+                name="iSearchLineaProduccion"
+                ng-model="filters.idLineaProduccion"
+                ng-required="true"  
+                ng-options="lineaProduccion.id as lineaProduccion.nombre for lineaProduccion in lineaProduccionList">
+  	    </select>  
+      </div>
+      <div class="col-xs-3">
+        <label class="control-label" for="iSearchFechaDesde">Fecha Desde:</label>
+        <input class="form-control" type="text" name="iSearchFechaDesde" ng-model="filters.fechaDesde" datepicker-popup min placeholder="dd-mm-aaaa"/>  
+	  </div>
+	  <div class="col-xs-3">
+        <label class="control-label" for="iSearchFechaHasta">Fecha Hasta:</label>
+        <input class="form-control" type="text" name="iSearchFechaHasta" ng-model="filters.fechaHasta" datepicker-popup min placeholder="dd-mm-aaaa"/>  
+	  </div>
+	  <div class="col-xs-2">
+	    <br>
+	    <button type="button" class="btn btn-info" ng-click="searchRodados()" ng-disabled="filters.idLineaProduccion == null"><i class="fa fa-search"></i> Buscar</button>
+	  </div>
+    </div>   
+    <br>
+    <div class="scrollable220">
+      <table class="table table-bordered table-striped">
+  	    <thead>
+          <tr>
+            <th><input type="checkbox" ng-model="checkboxModel.checkAll" ng-change="changeCheckedAll()"></th>
+            <th>Nro. Chasis</th>
+            <th>Nro. Motor</th>
+            <th>Nro. Llave</th>
+            <th>Código</th>
+          </tr>
+        </thead>
+        <tbody ng-repeat="r in rodadoList">
+          <tr>
+            <td>
+              <input type="checkbox" checklist-model="checkboxModel.rodadosSelected" checklist-value="r">
+            </td>
+            <td>{{r.nroChasis}}</td>
+            <td>{{r.nroMotor}}</td>
+            <td>{{r.nroLlave}}</td>
+            <td>{{r.codigo.codigo}}</td>
+          </tr>
+        </tbody>
+	  </table>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" ng-click="ok_confirm();cancel();" ng-disabled="checkboxModel.rodadosSelected.length == 0"><i class="fa fa-lock"></i> Bloquear</button>
+    <button type="button" class="btn btn-default" ng-click="cancel()">Cancelar</button>
+  </div>
+</div>
+
+

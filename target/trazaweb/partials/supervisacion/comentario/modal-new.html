@@ -1,0 +1,33 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title">{{title}}</h4>
+  </div>
+  <div class="modal-body">
+  	<div class="control-group">
+      <div class="row">
+        <div class="col-xs-12">
+          <label class="control-label" for="inputObservacion">Observación:</label>
+       	  <textarea class="form-control" name="inputObservacion" ng-model="verificacionObservacion.observacion" ng-disabled="read == true"/> 
+	    </div>
+      </div>
+      <div class="row" ng-show="read == true">
+        <div class="col-xs-6">
+          <label class="control-label" for="inputSupervisor">Supervisor:</label>
+       	  <input class="form-control" type="text" name="inputSupervisor" value="{{verificacionObservacion.usuario.apellido}}, {{verificacionObservacion.usuario.nombre}}" ng-disabled="true"/> 
+	    </div>
+	    <div class="col-xs-6">
+          <label class="control-label" for="inputFechaSupervisor">Fecha:</label>
+       	  <input class="form-control" type="text" name="inputFechaSupervisor" value="{{verificacionObservacion.fecha | date:'dd/MM/yyyy h:mma'}}" ng-disabled="true"/>  
+	    </div>
+      </div> 
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" ng-click="ok_confirm();cancel();" ng-disabled="verificacionObservacion.observacion == null || verificacionObservacion.observacion == null" ng-show="read == false"><i class="fa fa-floppy-o"></i> Aceptar</button>
+    <button type="button" class="btn btn-default" ng-click="cancel()" ng-show="read == false">Cancelar</button>
+    <button type="button" class="btn btn-default" ng-click="cancel()" ng-show="read == true">Volver</button>
+  </div>
+</div><!-- /.modal-content -->
+
+

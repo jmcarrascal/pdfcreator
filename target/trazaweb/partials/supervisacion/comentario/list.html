@@ -1,0 +1,50 @@
+<div class="form-base1">
+  <div class="row-fluid">
+    <h4>Usuario</h4>
+    <alert-message></alert-message>
+	<alert-error></alert-error>
+  </div>
+  <div class="form-base">
+    <div class="row-fluid">
+      <div class="row">
+      	<div class="col-xs-3">
+          <label class="control-label" for="inputNroChasis">Número de Chasis:</label>
+       	  <input class="form-control" type="text" name="inputNroChasis" value="{{verificacion.rodado.nroChasis}}" ng-disabled="true"/> 
+	    </div>
+        <div class="col-xs-3">
+          <label class="control-label" for="inputNroMotor">Número de Motor:</label>
+       	  <input class="form-control" type="text" name="inputNroMotor" value="{{verificacion.rodado.nroMotor}}" ng-disabled="true"/> 
+	    </div>
+	    <div class="col-xs-3">
+          <label class="control-label" for="inputNroLlave">Número de Llave:</label>
+       	  <input class="form-control" type="text" name="inputNroLlave" value="{{verificacion.rodado.nroLlave}}" ng-disabled="true"/> 
+	    </div>
+	    <div class="col-xs-3">
+          <label class="control-label" for="inputLineaProduccion">Línea de Producción:</label>
+       	  <input class="form-control" type="text" name="inputLineaProduccion" value="{{verificacion.checklist.puesto.lineaProduccion.nombre}}" ng-disabled="true"/> 
+	    </div>
+	  </div>
+	  <div class="row">
+	    <div class="col-xs-3">
+          <label class="control-label" for="inputPuesto">Puesto:</label>
+       	  <input class="form-control" type="text" name="inputPuesto" value="{{verificacion.checklist.puesto.orden}}-{{verificacion.checklist.puesto.nombre}}" ng-disabled="true"/> 
+	    </div>
+	    <div class="col-xs-2">
+	      <label class="control-label" for="inputEtapa">Etapa:</label>
+          <input class="form-control" type="text" name="inputEtapa" value="{{verificacion.checklist.etapa}}" ng-disabled="true"/>
+        </div>
+        <div class="col-xs-7">
+	      <label class="control-label" for="inputParametro">Parámetro:</label>
+          <input class="form-control" type="text" name="inputParametro" value="{{verificacion.checklist.parametro}}" ng-disabled="true"/>
+        </div>
+	  </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="gridStyle" ng-grid="observacionGrid.gridOptions"></div>
+        </div>
+      </div>
+      <a ng-click="create()" class="btn btn-small btn-primary"><i class="fa fa fa-comment-o"></i> Nueva Observación</a>
+      <a ng-click="back()" class="btn btn-small btn-default"><i class="fa fa-reply"></i> Volver</a>
+	</div>
+  </div>
+</div>

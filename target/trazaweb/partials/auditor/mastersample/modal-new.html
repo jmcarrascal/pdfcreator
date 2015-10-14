@@ -1,0 +1,62 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title">{{title}}</h4>
+  </div>
+  <div class="modal-body">
+  	<div class="control-group">
+  	  <div class="row">
+  	    <div class="col-xs-4">
+  	      <label class="control-label" for="inputFechaDesde">Fecha:</label>
+       	  <input class="form-control" type="text" name="inputFechaDesde" ng-model="masterSamplePart.fechaDesde" ng-required="true" ng-disabled="read == true" datepicker-popup min placeholder="dd-mm-aaaa"/>
+  	    </div>
+  	    <div class="col-xs-7">
+		  <label class="control-label">Nro. Chasis:</label>
+       	  <angucomplete-alt id="rodados"
+       	      initial-value="{{masterSamplePart.rodado.nroChasis}}"
+              placeholder="Buscar artículos"
+              pause="400"
+              selected-object="masterSamplePart.rodado"
+              remote-url="{{rootPath}}/rest/masterSamplePart/findRodado/"
+              title-field="nroChasis",
+              minlength="3",
+              text-searching="Buscando artículos...",
+              text-no-results="Sin resultados.",
+              input-class="form-control form-control-small",
+              disable-input="masterSamplePart.rodado != null"/>            
+	    </div>
+	    <div class="col-xs-1">
+	      <br>
+	      <button ng-click="resetRodado()" ng-disabled="read == true" class="btn btn-small btn-danger"><i class="fa fa-times"></i></button>
+	    </div>
+  	  </div>
+      <div class="row">
+        <div class="col-xs-6">
+          <label class="control-label" for="inputDescripcion">Descripción:</label>
+       	  <input class="form-control" type="text" name="inputDescripcion" ng-model="masterSamplePart.descripcion" ng-disabled="read == true"/>  
+	    </div>
+	    <div class="col-xs-6">
+          <label class="control-label" for="inputNroParte">Nro. Parte:</label>
+       	  <input class="form-control" type="text" name="inputNroParte" ng-model="masterSamplePart.nroParte" ng-disabled="read == true"/>  
+	    </div>
+	  </div>
+	  <div class="row">
+	    <div class="col-xs-6">
+          <label class="control-label" for="inputProveedor">Proveedor:</label>
+       	  <input class="form-control" type="text" name="inputProveedor" ng-model="masterSamplePart.proveedor" ng-disabled="read == true"/> 
+	    </div>
+	    <div class="col-xs-6">
+	      <label class="control-label" for="inputProveedorNro">Proveedor Nro:</label>
+          <input class="form-control" type="text" name="inputProveedorNro" ng-model="masterSamplePart.proveedorNro" ng-disabled="read == true"/>
+        </div>
+	  </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" ng-click="ok_confirm();cancel();" ng-show="read == false" ng-disabled="masterSamplePart.fechaDesde == null || masterSamplePart.rodado == null"><i class="fa fa-floppy-o"></i> Aceptar</button>
+    <button type="button" class="btn btn-default" ng-click="cancel()" ng-show="read == false">Cancelar</button>
+    <button type="button" class="btn btn-default" ng-click="cancel()" ng-show="read == true">Volver</button>
+  </div>
+</div><!-- /.modal-content -->
+
+

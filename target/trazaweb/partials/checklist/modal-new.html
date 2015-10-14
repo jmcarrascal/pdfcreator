@@ -1,0 +1,80 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title">{{title}}</h4>
+  </div>
+  <div class="modal-body">
+    <div class="alert alert-success ng-hide" ng-show="messageMetodoVerificacion != null">
+	  <a class="close" data-dismiss="alert">×</a>
+	  <strong class="ng-binding">{{messageMetodoVerificacion}}</strong>
+	</div>
+	<div class="alert alert-danger ng-hide" ng-show="errorMetodoVerificacion != null">
+	  <a class="close" data-dismiss="alert">×</a>
+	  <strong class="ng-binding">{{errorMetodoVerificacion}}</strong>
+	</div>
+  	<div class="control-group">
+      <div class="row">
+        <div class="col-xs-2">
+          <label class="control-label" for="inputEtapa">Etapa:</label>
+       	  <input class="form-control" type="number" name="inputEtapa" ng-required="true" ng-model="checklist.etapa" ng-disabled="read == true"/> 
+	    </div>
+	    <div class="col-xs-2">
+          <label class="control-label" for="inputEtapa">Grado:</label>
+       	  <input class="form-control" type="text" name="inputGrado" ng-model="checklist.grado" ng-disabled="read == true"/> 
+	    </div>
+	    <div class="col-xs-8">
+	      <label class="control-label" for="inputParametro">Parámetro:</label>
+          <input class="form-control" type="text" name="inputParametro" ng-required="true" ng-model="checklist.parametro" ng-disabled="read == true"/>
+        </div>
+	  </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <label class="control-label" for="inputEspecificaciones">Especificaciones:</label>
+          <textarea class="form-control" name="inputEspecificaciones" ng-model="checklist.especificaciones" ng-disabled="read == true"/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <label class="control-label" for="inputCriterioAceptacion">Criterio de aceptación:</label>
+          <input class="form-control" type="text" name="inputCriterioAceptacion" ng-model="checklist.criterioAceptacion" ng-disabled="read == true"/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-8">
+          <label class="control-label" for="inputMetodoVerificacion">Método Verificación:</label>
+          <select class="form-control" ng-model="checklist.metodoVerificacion.id" name="inputMetodoVerificacion" ng-disabled="read == true">
+		    <option ng-repeat="m in metodosVerificacion" value="{{m.id}}" ng-selected="m.id == checklist.metodoVerificacion.id">{{m.nombre}}</option>
+		  </select>
+		</div>
+		<div class="col-xs-1" ng-show="read == false">
+		  <label class="control-label" for="">&nbsp;</label>
+		  <a ng-click="newMetodoVerificacion();" class="btn btn-small btn-primary"><i class="fa fa-plus-square-o"></i></a>
+		</div>
+		<div class="col-xs-3">
+          <label class="control-label" for="inputFrecuencia">Frecuencia:</label>
+       	  <input class="form-control" type="number" name="inputFrecuencia" ng-required="true" ng-model="checklist.frecuencia" ng-disabled="read == true"/> 
+	    </div>
+      </div>
+      <div class="row" ng-show="newMetodoVerificacionForm" ng-show="read == false">
+        <div class="col-xs-8">
+          <input type="text" name="inputMetodoVerificacionNombre" ng-model="metodoVerificacionNew.nombre" placeholder="Ingrese el nuevo método"/>
+          <button type="button" ng-click="saveMetodoVerificacion();" class="btn btn-small btn-success" ng-disabled="metodoVerificacionNew.nombre == ''"><i class="fa fa-check-circle-o"></i></button>
+          <a ng-click="cancelMetodoVerificacion();" class="btn btn-small btn-danger"><i class="fa fa-times"></i></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <label class="control-label" for="inputObservacion">Observación:</label>
+          <textarea class="form-control" name="inputObservacion" ng-model="checklist.observacion" ng-disabled="read == true"/>
+        </div>
+      </div>
+    </div> 
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" ng-click="ok_confirm();cancel();" ng-show="read == false" ng-disabled="checklist.etapa == null || checklist.parametro == null || checklist.frecuencia == null"><i class="fa fa-floppy-o"></i> Aceptar</button>
+    <button type="button" class="btn btn-default" ng-click="cancel()" ng-show="read == false">Cancelar</button>
+    <button type="button" class="btn btn-default" ng-click="cancel()" ng-show="read == true">Volver</button>
+  </div>
+</div><!-- /.modal-content -->
+
+

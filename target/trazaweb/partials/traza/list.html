@@ -1,0 +1,36 @@
+<div class="form-base1">
+	<div class="row-fluid">
+		<h4>Medicamentos a Recepcionar</h4>
+		<alert-message></alert-message>
+		<alert-error></alert-error>
+	</div>
+	<div class="form-base">
+		<div class="row-fluid">
+			<div class="row">
+				<div class="col-xs-12">
+					<form ng-submit="addMedicamento()">
+						<label class="control-label" for="hash">Lectura de Caja:
+						</label> <input class="form-control" type="text" name="hash"
+							ng-model="hash" id="hash" /> <br> <input
+							type="submit" name="inputSubmit"
+							class="btn btn-small btn-primary" id="submit" value="Buscar"
+							ng-disabled="hash == null || hash == ''" />
+					</form>
+					<br>
+					<div class="gridStyle" ng-grid="trazaRemitoGrid.gridOptions"
+						style="width: 100%"></div>
+					<br>
+			            <label class="control-label" for=transacNr>Ingrese la transacción de la orden de compra asociada:</label>
+			       	    <input class="form-control" type="text" id="transacNr" name="transacNr" ng-model="transacNr"/>
+					<br>	
+					<form ng-submit="ingresoAnmat()">
+						 <br> <input
+							type="submit" name="inputSubmit"
+							class="btn btn-small btn-primary" value="Ingresar los medicamentos seleccionados a Anmat"
+							/>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
